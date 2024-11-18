@@ -22,6 +22,25 @@ let students=[{
   marks:70
 }];
 
+
+let cars=[
+  {
+    make:'Maruti',
+    model:'Swift',
+    mileage:15
+  },
+  {
+    make:'Hyundai',
+    model:'i20',
+    mileage:18
+  },
+  {
+    make:'Tata',
+    model:'nexon',
+    mileage:20
+  }
+];
+
 function sortAscendingOrder(age1,age2){
  return age1-age2;
 }
@@ -32,6 +51,10 @@ function sortDescendingOrder(age1,age2){
 
  function sortStudentMarksInDescending(student1,student2){
  return student2.marks-student1.marks;
+ }
+
+ function sortCarsMileageInDescending(car1, car2){
+  return car2.mileage-car1.mileage;
  }
 
 app.get('/ages/sort-ascending',(req, res)=>{
@@ -50,6 +73,12 @@ app.get('/students/sort-by-marks-descending',(req, res)=>{
  studentsCopy=students.slice();
  studentsCopy.sort(sortStudentMarksInDescending);
  res.json(studentsCopy);
+})
+
+app.get('/cars/sort-by-mileage-descending',(req, res)=>{
+   let carsCopy=cars.slice();
+   carsCopy.sort(sortCarsMileageInDescending);
+   res.json(carsCopy);
 })
 
 app.listen(port, () => {
